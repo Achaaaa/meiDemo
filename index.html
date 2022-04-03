@@ -67,14 +67,14 @@
         });
         faceMesh.onResults(onResults);
 
-        //const camera = new Camera(videoElement, {
-          //  onFrame: async () => {
-          //      await faceMesh.send({ image: videoElement });
-          //  },
-          //  width: 540,
-         //   height: 360
-        //});
-        //camera.start();
+        const camera = new Camera(videoElement, {
+            onFrame: async () => {
+                await faceMesh.send({ image: videoElement });
+            },
+            width: 540,
+            height: 360
+        });
+        camera.start();
     </script>
     <button onclick="openEye()">openEye</button>
     <button onclick="closeEye()">closeEye</button>
