@@ -84,14 +84,14 @@
         });
         camera.start();
     </script>
-    <button onclick="openEye()"id="button1">Bye</button>
-    <button onclick="closeEye()">closeEye</button>
-    <script>const openEye = function () {
+    <button onclick="openEye()" id="button1">funcOpen</button>
+    <button onclick="closeEye()">funcClose</button>
+    <script>function openEye() {
         unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
         alert('購入しました！');
         button1.style.backgroundColor = "orange";
         };</script>
-    <script>const closeEye = function () {
+    <script>function closeEye() {
         unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
         button1.style.backgroundColor = "orange";
         };</script>
