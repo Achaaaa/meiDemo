@@ -82,22 +82,21 @@
             width: 540,
             height: 360
         });
-        camera.start();
-    </script>
-    <button onclick="openEye()" id="button1">funcOpen</button>
-    <button onclick="closeEye()">funcClose</button>
-    <script>function openEye() {
-        unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
-        alert('購入しました！');
-        button1.style.backgroundColor = "orange";
-        };</script>
-    <script>function closeEye() {
-        unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
-        button1.style.backgroundColor = "orange";
-        };</script>
+        camera.start();</script>
+    <button onclick="openEye()" id="button1">Open</button>
+    <button onclick="closeEye()">Close</button>
     <script>
-        funnction() {unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');};
+        function openEye() {
+            //unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
+            alert('購入しました！');
+            button1.style.backgroundColor = "orange";
+        }
+        function closeEye() {
+            //unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
+            button1.style.backgroundColor = "orange";
+        }
     </script>
+    <script>funnction() { unityInstance.SendMessage('eyeBlind', 'javaEyeOpen'); }</script>
 
-</body >
+</body>
 </html >
