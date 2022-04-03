@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>mei</title>
-    <meta charset="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
@@ -79,10 +78,10 @@
     <button onclick="close()">close2</button>
     <button onclick="open()">open2</button>
     <script type="text/javascript">const close = function () {
-            unityInstance.SendMessage('eyeBlind', 'javaEye', true);
+            unityInstance.SendMessage('eyeBlind', 'javaEye', 1);
         };</script>
     <script type="text/javascript">const open = function () {
-            unityInstance.SendMessage('eyeBlind', 'javaEye', false);
+            unityInstance.SendMessage('eyeBlind', 'javaEye', 0);
         };</script>
 </body>
 </html>
