@@ -89,11 +89,12 @@
         var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
         function openEye() {
             unityInstance.SendMessage('eyeBlind','javaEyeOpen');
-            alert('購入しました！');
+            alert('open');
             button1.style.backgroundColor = "orange";
         }
         function closeEye() {
-            unityInstance.SendMessage('eyeBlind','javaEyeClose');
+            unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
+            alert('close');
             button2.style.backgroundColor = "orange";
         }
     </script>
