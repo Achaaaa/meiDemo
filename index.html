@@ -76,14 +76,14 @@
             height: 720
         });
         camera.start();</script>
-    <button id="send">Send Message2</button>
-    <script type="text/javascript" src="lib/osc.browser.min.js"></script>
-    <script type="text/javascript">var osc = new OSC();
-        osc.open({ port: 9000 }); // connect by default to ws://localhost:8080
-
-        document.getElementById('send').addEventListener('click', () => {
-            var message = new OSC.Message('/test/random', Math.random());
-            osc.send(message);
-        });</script>
+    <button onclick="close()">close</button>
+    <button onclick="open()">open</button>
+    <script type="text/javascript">
+        const close = function () {
+            unityInstance.SendMessage('eyeBlind', 'javaEye', true);
+        };
+        const open = function () {
+            unityInstance.SendMessage('eyeBlind', 'javaEye', false);
+        };</script>
 </body>
 </html>
