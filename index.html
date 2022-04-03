@@ -75,12 +75,12 @@
             height: 720
         });
         camera.start();</script>
-    <button onclick="open()">open4</button>
-    <button onclick="close()">close4</button>
-    <script>const open = function () {
+    <button onclick="openEye()">openEye</button>
+    <button onclick="closeEye()">closeEye</button>
+    <script>const openEye = function () {
             unityInstance.SendMessage('eyeBlind', 'javaEye', 0);
         };</script>
-    <script>const close = function () {
+    <script>const closeEye = function () {
             unityInstance.SendMessage('eyeBlind', 'javaEye', 1);
         };</script>
 
