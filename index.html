@@ -78,11 +78,10 @@
         camera.start();</script>
     <button onclick="close()">close</button>
     <button onclick="open()">open</button>
-    <script type="text/javascript">
-        const close = function () {
+    <script type="text/javascript">const close = function () {
             unityInstance.SendMessage('eyeBlind', 'javaEye', true);
-        };
-        const open = function () {
+        };</script>
+    <script type="text/javascript">const open = function () {
             unityInstance.SendMessage('eyeBlind', 'javaEye', false);
         };</script>
 </body>
