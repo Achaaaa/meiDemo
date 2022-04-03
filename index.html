@@ -79,10 +79,10 @@
     <button onclick="openEye()">openEye</button>
     <button onclick="closeEye()">closeEye</button>
     <script>const openEye = function () {
-            unityInstance.SendMessage('eyeBlind', 'javaEye', 0);
+            unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
         };</script>
     <script>const closeEye = function () {
-            unityInstance.SendMessage('eyeBlind', 'javaEye', 1);
+            unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
         };</script>
 
 </body>
