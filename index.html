@@ -9,6 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/osc@2.4.2/dist/osc-browser.min.js"></script>
+    <style>
+        #button1 {
+            border: solid 2px blue;
+            border-radius: 10px;
+            background-color: lightblue;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body style="text-align: center">
     <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
@@ -76,7 +84,7 @@
         });
         camera.start();
     </script>
-    <button onclick="openEye()">openEye</button>
+    <button onclick="openEye()"id="button1">openEye</button>
     <button onclick="closeEye()">closeEye</button>
     <script>const openEye = function () {
             unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
@@ -84,6 +92,9 @@
     <script>const closeEye = function () {
             unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
         };</script>
+    <script>
+        funnction() {unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');};
+    </script>
 
-</body>
-</html>
+</body >
+</html >
