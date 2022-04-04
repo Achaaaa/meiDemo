@@ -85,15 +85,15 @@
             height: 360
         });
         camera.start();</script>
-    <button onclick="openEye()" id="button1">open</button>
-    <button onclick="closeEye()" id="button2">close</button>
+    <button onclick="openEye()" id="button1">op</button>
+    <button onclick="closeEye()" id="button2">cl</button>
     <script>function openEye() {
-            unityInstance.SendMessage('eyeBlind', 'javaEyeOpen', 0);
+            unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
             alert('open');
             button1.style.backgroundColor = "orange";
         }
         function closeEye() {
-            unityInstance.SendMessage('eyeBlind', 'javaEyeClose', 1);
+            unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
             alert('close');
             button2.style.backgroundColor = "orange";
         }</script>
