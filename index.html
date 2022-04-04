@@ -85,8 +85,8 @@
             height: 360
         });
         camera.start();</script>
-    <button onclick="openEye()" id="button1">openInstance</button>
-    <button onclick="closeEye()" id="button2">closeInstance</button>
+    <button onclick="openEye()" id="button1">open</button>
+    <button onclick="closeEye()" id="button2">close</button>
     <script>function openEye() {
             unityInstance.SendMessage('eyeBlind', 'javaEyeOpen', 0);
             alert('open');
