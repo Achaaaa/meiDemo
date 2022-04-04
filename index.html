@@ -85,17 +85,17 @@
             height: 360
         });
         camera.start();</script>
-    <button onclick="openEye()"id="button1">open</button>
-    <button onclick="closeEye()"id="button2">close</button>
+    <button onclick="openEye()"id="button1">open10</button>
+    <button onclick="closeEye()"id="button2">close10</button>
     <script>
         //var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
         function openEye() {
-            //unityInstance.SendMessage('eyeBlind','javaEyeOpen');
+            unityGame.SendMessage('eyeBlind','javaEyeOpen');
             alert('open');
             button1.style.backgroundColor = "orange";
         }
         function closeEye() {
-            //unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
+            unityGame.SendMessage('eyeBlind', 'javaEyeClose');
             alert('close');
             button2.style.backgroundColor = "orange";
         }
