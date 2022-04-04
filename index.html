@@ -34,16 +34,6 @@
             // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
             // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
         }
-        function openEye() {
-            unityGame.SendMessage('eyeBlind', 'javaEyeOpen');
-            alert('open');
-            button1.style.backgroundColor = "orange";
-        }
-        function closeEye() {
-            unityGame.SendMessage('eyeBlind', 'javaEyeClose');
-            alert('close');
-            button2.style.backgroundColor = "orange";
-        }
     </script>
     <div class="container">
         <video class="input_video"></video>
