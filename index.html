@@ -22,6 +22,7 @@
 <body style="text-align: center">
     <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
     <script src="Build/mei.loader.js"></script>
+    <script>var unityInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%");</script>
     <script>createUnityInstance(document.querySelector("#unity-canvas"), {
             dataUrl: "Build/mei.data.unityweb",
             frameworkUrl: "Build/mei.framework.js.unityweb",
