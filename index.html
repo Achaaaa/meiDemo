@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/osc@2.4.2/dist/osc-browser.min.js"></script>
+    </script>
     <style>
         #button1 {
             border: solid 2px blue;
@@ -31,7 +32,18 @@
             productVersion: "1.0",
             // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
             // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-        });</script>
+            });
+            function openEye() {
+                unityInstance.SendMessage('eyeBlind','javaEyeOpen');
+                alert('open');
+                button1.style.backgroundColor = "orange";
+            }
+            function closeEye() {
+                unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
+                alert('close');
+                button2.style.backgroundColor = "orange";
+            }
+    </script>
     <div class="container">
         <video class="input_video"></video>
         <canvas class="output_canvas" width="540px" height="360px"></canvas>
@@ -85,19 +97,6 @@
         camera.start();</script>
     <button onclick="openEye()"id="button1">open</button>
     <button onclick="closeEye()"id="button2">close</button>
-    <script>
-        var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
-        function openEye() {
-            unityInstance.SendMessage('eyeBlind','javaEyeOpen');
-            alert('open');
-            button1.style.backgroundColor = "orange";
-        }
-        function closeEye() {
-            unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
-            alert('close');
-            button2.style.backgroundColor = "orange";
-        }
-    </script>
 
 </body>
 </html >
