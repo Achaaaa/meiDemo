@@ -32,18 +32,9 @@
             productVersion: "1.0",
             // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
             // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-            });
-            function openEye() {
-                unityInstance.SendMessage('eyeBlind','javaEyeOpen');
-                alert('open');
-                button1.style.backgroundColor = "orange";
-            }
-            function closeEye() {
-                unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
-                alert('close');
-                button2.style.backgroundColor = "orange";
-            }
-    </script>
+        }).then((unityInstance) => {
+            unityGame = unityInstance; //This mine
+        };</script>
     <div class="container">
         <video class="input_video"></video>
         <canvas class="output_canvas" width="540px" height="360px"></canvas>
@@ -95,8 +86,20 @@
             height: 360
         });
         camera.start();</script>
-    <button onclick="openEye()"id="button1">open</button>
-    <button onclick="closeEye()"id="button2">close</button>
+    <button onclick="openEye()" id="button1">open</button>
+    <button onclick="closeEye()" id="button2">close</button>
+    <script>
+    function openEye() {
+        unityGame.SendMessage('eyeBlind','javaEyeOpen');
+        alert('open');
+        button1.style.backgroundColor = "orange";
+        }
+        function closeEye() {
+        unityGame.SendMessage('eyeBlind', 'javaEyeClose');
+        alert('close');
+        button2.style.backgroundColor = "orange";
+        }
+    </script>
 
 </body>
 </html >
