@@ -11,118 +11,136 @@
     <script src="https://cdn.jsdelivr.net/npm/osc@2.4.2/dist/osc-browser.min.js"></script>
     </script>
     <style>
-        #button1 {
-            border: solid 2px blue;
-            border-radius: 10px;
-            background-color: lightblue;
-            padding: 20px;
+        .output_canvas {
+            border: 5px solid;
+            border-color: #999999;
+        }
+        .right {
+            display: flex;
+            flex-flow: column;
+            width: 270px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .main {
+            position: relative;
+            display: flex;
+            background-color: black;
+            width: 910px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
 <video class="input_video"width=0 height=0></video>
 <body style="text-align: center">
-    <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
-    <script src="Build/mei.loader.js"></script>
-    <script>var unityInstance = null;
-            createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/mei.data.unityweb",
-            frameworkUrl: "Build/mei.framework.js.unityweb",
-            codeUrl: "Build/mei.wasm.unityweb",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "DefaultCompany",
-            productName: "mei",
-            productVersion: "1.0",
-            }).then(x => unityInstance = x);</script>
-    <div class="container">
-        <canvas class="output_canvas" width="270px" height="180px"></canvas>
+    <div class>
+        <div class="main">
+            <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
+            <script src="Build/mei.loader.js"></script>
+            <script>var unityInstance = null;
+                createUnityInstance(document.querySelector("#unity-canvas"), {
+                    dataUrl: "Build/mei.data.unityweb",
+                    frameworkUrl: "Build/mei.framework.js.unityweb",
+                    codeUrl: "Build/mei.wasm.unityweb",
+                    streamingAssetsUrl: "StreamingAssets",
+                    companyName: "DefaultCompany",
+                    productName: "mei",
+                    productVersion: "1.0",
+                }).then(x => unityInstance = x);</script>
+            <div class="right">
+                <h><font color="white">↓Observer</font></h>
+                <canvas class="output_canvas" width="270px" height="180px"></canvas>
+            </div>
+        </div>
     </div>
-    <script type="module">const videoElement = document.getElementsByClassName('input_video')[0];
-        const canvasElement = document.getElementsByClassName('output_canvas')[0];
-        const canvasCtx = canvasElement.getContext('2d');
-        var leftEyeUpper = null;
-        var leftEyeLower = null;
-        var rightEyeUpper = null;
-        var rightEyeLower = null;
-        var leftEyeClosed = false;
-        var rightEyeClosed = false;
-        function onResults(results) {
-            canvasCtx.save();
-            canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-            canvasCtx.drawImage(
-                results.image, 0, 0, canvasElement.width, canvasElement.height);
-            if (results.multiFaceLandmarks) {
-                for (const landmarks of results.multiFaceLandmarks) {
-                    canvasCtx.fillRect(0, 0, 270, 180);
-                    canvasCtx.fill();
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_TESSELATION,
-                        { color: '#C0C0C070', lineWidth: 0.5 });
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYE, { color: '#FF3030', lineWidth: 0.5});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYEBROW, { color: '#FF3030', lineWidth: 0.5});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_IRIS, { color: '#FF3030', lineWidth: 0.5});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYE, { color: '#30FF30', lineWidth: 0.5});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYEBROW, { color: '#30FF30', lineWidth: 0.5});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_IRIS, { color: '#30FF30', lineWidth: 0.5});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_FACE_OVAL, { color: '#E0E0E0', lineWidth: 0.5});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_LIPS, { color: '#E0E0E0', lineWidth: 0.5});
+        <script type="module">const videoElement = document.getElementsByClassName('input_video')[0];
+            const canvasElement = document.getElementsByClassName('output_canvas')[0];
+            const canvasCtx = canvasElement.getContext('2d');
+            var leftEyeUpper = null;
+            var leftEyeLower = null;
+            var rightEyeUpper = null;
+            var rightEyeLower = null;
+            var leftEyeClosed = false;
+            var rightEyeClosed = false;
+            function onResults(results) {
+                canvasCtx.save();
+                canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+                canvasCtx.drawImage(
+                    results.image, 0, 0, canvasElement.width, canvasElement.height);
+                if (results.multiFaceLandmarks) {
+                    for (const landmarks of results.multiFaceLandmarks) {
+                        canvasCtx.fillRect(0, 0, 270, 180);
+                        canvasCtx.fill();
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_TESSELATION,
+                            { color: '#C0C0C070', lineWidth: 0.5 });
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYE, { color: '#FF3030', lineWidth: 0.5 });
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYEBROW, { color: '#FF3030', lineWidth: 0.5 });
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_IRIS, { color: '#FF3030', lineWidth: 0.5 });
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYE, { color: '#30FF30', lineWidth: 0.5 });
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYEBROW, { color: '#30FF30', lineWidth: 0.5 });
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_IRIS, { color: '#30FF30', lineWidth: 0.5 });
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_FACE_OVAL, { color: '#E0E0E0', lineWidth: 0.5 });
+                        drawConnectors(canvasCtx, landmarks, FACEMESH_LIPS, { color: '#E0E0E0', lineWidth: 0.5 });
 
-                    leftEyeUpper = results.multiFaceLandmarks[0][159]
-                    leftEyeLower = results.multiFaceLandmarks[0][145]
-                    rightEyeUpper = results.multiFaceLandmarks[0][386]
-                    rightEyeLower = results.multiFaceLandmarks[0][374]
-                    if (Math.abs(leftEyeUpper.y - leftEyeLower.y) < 0.009) {
-                        leftEyeClosed = true;
+                        leftEyeUpper = results.multiFaceLandmarks[0][159]
+                        leftEyeLower = results.multiFaceLandmarks[0][145]
+                        rightEyeUpper = results.multiFaceLandmarks[0][386]
+                        rightEyeLower = results.multiFaceLandmarks[0][374]
+                        if (Math.abs(leftEyeUpper.y - leftEyeLower.y) < 0.009) {
+                            leftEyeClosed = true;
+                        }
+                        else {
+                            leftEyeClosed = false;
+                        }
+                        if (Math.abs(rightEyeUpper.y - rightEyeLower.y) < 0.009) {
+                            rightEyeClosed = true;
+                        }
+                        else {
+                            rightEyeClosed = false;
+                        }
+                        if (leftEyeClosed && rightEyeClosed) {
+                            closeEye();
+                        }
+
+                        if (leftEyeClosed == false && rightEyeClosed == false) {
+                            openEye();
+                        }
+
                     }
-                    else{
-                        leftEyeClosed = false;
-                    }
-                    if (Math.abs(rightEyeUpper.y - rightEyeLower.y) < 0.009) {
-                        rightEyeClosed = true;
-                    }
-                    else{
-                        rightEyeClosed = false;
-                    }
-                    if(leftEyeClosed && rightEyeClosed) {
-                        closeEye();
-                    }
-                    
-                    if (leftEyeClosed == false && rightEyeClosed == false) {
-                        openEye();
-                    }
-                    
                 }
+                canvasCtx.restore();
             }
-            canvasCtx.restore();
-        }
 
-        const faceMesh = new FaceMesh({
-            locateFile: (file) => {
-                return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
+            const faceMesh = new FaceMesh({
+                locateFile: (file) => {
+                    return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
+                }
+            });
+            faceMesh.setOptions({
+                maxNumFaces: 1,
+                refineLandmarks: true,
+                minDetectionConfidence: 0.5,
+                minTrackingConfidence: 0.5
+            });
+            faceMesh.onResults(onResults);
+
+            const camera = new Camera(videoElement, {
+                onFrame: async () => {
+                    await faceMesh.send({ image: videoElement });
+                },
+                width: 540,
+                height: 360
+            });
+            camera.start();</script>
+        <script>function openEye() {
+                if (unityInstance != null) unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
             }
-        });
-        faceMesh.setOptions({
-            maxNumFaces: 1,
-            refineLandmarks: true,
-            minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.5
-        });
-        faceMesh.onResults(onResults);
+            function closeEye() {
+                if (unityInstance != null) unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
 
-        const camera = new Camera(videoElement, {
-            onFrame: async () => {
-                await faceMesh.send({ image: videoElement });
-            },
-            width: 540,
-            height: 360
-        });
-        camera.start();</script>
-    <script>
-        function openEye() {
-            if (unityInstance != null) unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
-        }
-        function closeEye() {
-            if (unityInstance != null) unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
-            
-        }</script>
+            }</script>
 
 </body>
 </html >
