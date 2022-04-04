@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/osc@2.4.2/dist/osc-browser.min.js"></script>
     </script>
     <style>
         #button1 {
@@ -17,11 +18,20 @@
             padding: 20px;
         }
     </style>
-    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
-    <script>var unityInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%");</script>
 </head>
 <body style="text-align: center">
-    <div id="gameContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px; margin: auto"></div>
+    <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
+    <script src="Build/mei.loader.js"></script>
+    <script>var unityInstance = null;
+            createUnityInstance(document.querySelector("#unity-canvas"), {
+            dataUrl: "Build/mei.data.unityweb",
+            frameworkUrl: "Build/mei.framework.js.unityweb",
+            codeUrl: "Build/mei.wasm.unityweb",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "DefaultCompany",
+            productName: "mei",
+            productVersion: "1.0",
+            })).then(x => unityInstance = x);</script>
     <div class="container">
         <video class="input_video"></video>
         <canvas class="output_canvas" width="540px" height="360px"></canvas>
@@ -73,8 +83,8 @@
             height: 360
         });
         camera.start();</script>
-    <button onclick="openEye()" id="button1">simpleopen</button>
-    <button onclick="closeEye()" id="button2">simpleclose</button>
+    <button onclick="openEye()" id="button1">open</button>
+    <button onclick="closeEye()" id="button2">close</button>
     <script>function openEye() {
             unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
             alert('open');
