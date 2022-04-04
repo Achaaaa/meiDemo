@@ -23,8 +23,7 @@
     <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
     <script src="Build/mei.loader.js"></script>
     <script>
-        var unityGame;
-        createUnityInstance(document.querySelector("#unity-canvas"), {
+        var unityGame = createUnityInstance(document.querySelector("#unity-canvas"), {
             dataUrl: "Build/mei.data.unityweb",
             frameworkUrl: "Build/mei.framework.js.unityweb",
             codeUrl: "Build/mei.wasm.unityweb",
@@ -34,9 +33,7 @@
             productVersion: "1.0",
             // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
             // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-        }).then((unityInstance) => {
-            unityGame = unityInstance; //This mine
-        };
+        }
         function openEye() {
             unityGame.SendMessage('eyeBlind', 'javaEyeOpen');
             alert('open');
@@ -99,8 +96,8 @@
             height: 360
         });
         camera.start();</script>
-    <button onclick="openEye()" id="button1">opene</button>
-    <button onclick="closeEye()" id="button2">closene</button>
+    <button onclick="openEye()" id="button1">open</button>
+    <button onclick="closeEye()" id="button2">close</button>
 
 </body>
 </html >
