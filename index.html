@@ -69,14 +69,12 @@
                     rightEyeLower = results.multiFaceLandmarks[0][374]
                     if (Math.abs(leftEyeUpper.y - leftEyeLower.y) < 0.009) {
                         leftEyeClosed = true;
-                        button1.style.backgroundColor = "orange";
                     }
                     else{
                         leftEyeClosed = false;
                     }
                     if (Math.abs(rightEyeUpper.y - rightEyeLower.y) < 0.009) {
                         rightEyeClosed = true;
-                        button2.style.backgroundColor = "orange";
                     }
                     else{
                         rightEyeClosed = false;
