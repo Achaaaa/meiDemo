@@ -11,23 +11,31 @@
     <script src="https://cdn.jsdelivr.net/npm/osc@2.4.2/dist/osc-browser.min.js"></script>
     </script>
     <style>
+
+        @font-face {
+            font-family: 'MyFont';
+            src: url('PixelMplus12-Regular');
+        }
+
         .output_canvas {
+            <!--position: absolute;-->
             border: 5px solid;
             border-color: #999999;
+            margin-right: 0;
         }
         .right {
+            <!-- position: relative; -->
+            font-family: 'MyFont';
             display: flex;
-            flex-flow: column;
-            width: 270px;
-            position: absolute;
-            bottom: 0;
-            right: 0;
+            width: 640px;
+            background-color: black;
+            margin-left: auto;
+            margin-right: auto;
         }
         .main {
-            position: relative;
             display: flex;
             background-color: black;
-            width: 910px;
+            width: 640px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -36,7 +44,6 @@
 <video class="input_video"width=0 height=0></video>
 <body style="text-align: center">
     <div class>
-        <div class="main">
             <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
             <script src="Build/mei.loader.js"></script>
             <script>var unityInstance = null;
@@ -50,10 +57,9 @@
                     productVersion: "1.0",
                 }).then(x => unityInstance = x);</script>
             <div class="right">
-                <h><font color="white">↓Observer</font></h>
+                <!--<h><font color="white">↓Observer</font></h>-->
                 <canvas class="output_canvas" width="270px" height="180px"></canvas>
             </div>
-        </div>
     </div>
         <script type="module">const videoElement = document.getElementsByClassName('input_video')[0];
             const canvasElement = document.getElementsByClassName('output_canvas')[0];
@@ -70,9 +76,9 @@
                 canvasCtx.drawImage(
                     results.image, 0, 0, canvasElement.width, canvasElement.height);
                 if (results.multiFaceLandmarks) {
+                    canvasCtx.fillRect(0, 0, 270, 180);
+                    canvasCtx.fill();
                     for (const landmarks of results.multiFaceLandmarks) {
-                        canvasCtx.fillRect(0, 0, 270, 180);
-                        canvasCtx.fill();
                         drawConnectors(canvasCtx, landmarks, FACEMESH_TESSELATION,
                             { color: '#C0C0C070', lineWidth: 0.5 });
                         drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYE, { color: '#FF3030', lineWidth: 0.5 });
