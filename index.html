@@ -22,7 +22,9 @@
 <body style="text-align: center">
     <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
     <script src="Build/mei.loader.js"></script>
-    <script>createUnityInstance(document.querySelector("#unity-canvas"), {
+    <script>
+        var unityGame;
+        createUnityInstance(document.querySelector("#unity-canvas"), {
             dataUrl: "Build/mei.data.unityweb",
             frameworkUrl: "Build/mei.framework.js.unityweb",
             codeUrl: "Build/mei.wasm.unityweb",
@@ -34,7 +36,18 @@
             // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
         }).then((unityInstance) => {
             unityGame = unityInstance; //This mine
-        };</script>
+        };
+        function openEye() {
+            unityGame.SendMessage('eyeBlind', 'javaEyeOpen');
+            alert('open');
+            button1.style.backgroundColor = "orange";
+        }
+        function closeEye() {
+            unityGame.SendMessage('eyeBlind', 'javaEyeClose');
+            alert('close');
+            button2.style.backgroundColor = "orange";
+        }
+    </script>
     <div class="container">
         <video class="input_video"></video>
         <canvas class="output_canvas" width="540px" height="360px"></canvas>
@@ -86,20 +99,8 @@
             height: 360
         });
         camera.start();</script>
-    <button onclick="openEye()" id="button1">openn</button>
-    <button onclick="closeEye()" id="button2">closee</button>
-    <script>
-    function openEye() {
-        unityGame.SendMessage('eyeBlind','javaEyeOpen');
-        alert('open');
-        button1.style.backgroundColor = "orange";
-        }
-        function closeEye() {
-        unityGame.SendMessage('eyeBlind', 'javaEyeClose');
-        alert('close');
-        button2.style.backgroundColor = "orange";
-        }
-    </script>
+    <button onclick="openEye()" id="button1">opene</button>
+    <button onclick="closeEye()" id="button2">closene</button>
 
 </body>
 </html >
