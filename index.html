@@ -17,13 +17,11 @@
             padding: 20px;
         }
     </style>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <script>var unityInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%");</script>
 </head>
 <body style="text-align: center">
-    <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
-    <script src="Build/mei.loader.js"></script>
-
-    <script>var unityInstance = UnityLoader.instantiate("gameContainer", "Build/mei.data.unityweb");</script>
-    <div id="gameContainer" style="width: 540px; height: 360px; margin: auto"></div>
+    <div id="gameContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px; margin: auto"></div>
     <div class="container">
         <video class="input_video"></video>
         <canvas class="output_canvas" width="540px" height="360px"></canvas>
