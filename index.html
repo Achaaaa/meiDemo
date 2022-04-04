@@ -8,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/osc@2.4.2/dist/osc-browser.min.js"></script>
     </script>
     <style>
         #button1 {
@@ -22,18 +21,9 @@
 <body style="text-align: center">
     <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
     <script src="Build/mei.loader.js"></script>
-    <script>createUnityInstance(document.querySelector("#unity-canvas"), {
-            dataUrl: "Build/mei.data.unityweb",
-            frameworkUrl: "Build/mei.framework.js.unityweb",
-            codeUrl: "Build/mei.wasm.unityweb",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "DefaultCompany",
-            productName: "mei",
-            productVersion: "1.0",
-            // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-            // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-        });</script>
-    <script>var unityInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%");</script>
+
+    <script>var unityInstance = UnityLoader.instantiate("gameContainer", "Build/mei.data.unityweb");</script>
+    <div id="gameContainer" style="width: 540px; height: 360px; margin: auto"></div>
     <div class="container">
         <video class="input_video"></video>
         <canvas class="output_canvas" width="540px" height="360px"></canvas>
