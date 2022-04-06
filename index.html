@@ -37,35 +37,22 @@
         }
     </style>
 </head>
-<script>function videoStart() {
-        var constraints = { audio: false, video: { facingMode: "user" } };
+<script>const medias = {
+        audio: false,
+        video: true
+    };
+    const video = document.getElementById("video");
+    const promise = navigator.mediaDevices.getUserMedia(medias);
 
-        navigator.mediaDevices.getUserMedia(constraints)
-            .then(
-                function (stream) {
-                    var video = document.querySelector('video');
-                    video.srcObject = stream;
-                    video.onloadedmetadata = function (e) {
-                        video.play();
-                    };
-                }
-            )
+    promise.then(successCallback)
+        .then(errorCallback);
+
+    function successCallback(stream) {
+        video.srcObject = stream;
     };
 
-
-    function videoStop() {
-        var constraints = { audio: false, video: { facingMode: "user" } };
-
-        navigator.mediaDevices.getUserMedia(constraints)
-            .then(
-                function (stream) {
-                    var video = document.querySelector('video');
-                    video.srcObject = stream;
-                    video.onloadedmetadata = function (e) {
-                        stream.getVideoTracks()[0].stop();
-                    };
-                }
-            )
+    function errorCallback(err) {
+        alert(err);
     };</script>
 <video class="input_video"width=0 height=0></video>
 <body style="text-align: center">
