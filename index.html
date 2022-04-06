@@ -37,25 +37,59 @@
         }
     </style>
 </head>
+<script>function videoStart() {
+        var constraints = { audio: false, video: { facingMode: "user" } };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(
+                function (stream) {
+                    var video = document.querySelector('video');
+                    video.srcObject = stream;
+                    video.onloadedmetadata = function (e) {
+                        video.play();
+                    };
+                }
+            )
+    };
+
+
+    function videoStop() {
+        var constraints = { audio: false, video: { facingMode: "user" } };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(
+                function (stream) {
+                    var video = document.querySelector('video');
+                    video.srcObject = stream;
+                    video.onloadedmetadata = function (e) {
+                        stream.getVideoTracks()[0].stop();
+                    };
+                }
+            )
+    };</script>
 <video class="input_video"width=0 height=0></video>
 <body style="text-align: center">
     <div class>
-            <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
-            <script src="Build/mei.loader.js"></script>
-            <script>var unityInstance = null;
-                createUnityInstance(document.querySelector("#unity-canvas"), {
-                    dataUrl: "Build/mei.data.unityweb",
-                    frameworkUrl: "Build/mei.framework.js.unityweb",
-                    codeUrl: "Build/mei.wasm.unityweb",
-                    streamingAssetsUrl: "StreamingAssets",
-                    companyName: "DefaultCompany",
-                    productName: "mei",
-                    productVersion: "1.0",
-                }).then(x => unityInstance = x);</script>
-            <div class="right">
-                <!--<h><font color="white">↓Observer</font></h>-->
-                <canvas class="output_canvas" width="270px" height="180px"></canvas>
-            </div>
+        <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
+        <script src="Build/mei.loader.js"></script>
+        <script>var unityInstance = null;
+            createUnityInstance(document.querySelector("#unity-canvas"), {
+                dataUrl: "Build/mei.data.unityweb",
+                frameworkUrl: "Build/mei.framework.js.unityweb",
+                codeUrl: "Build/mei.wasm.unityweb",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "DefaultCompany",
+                productName: "mei",
+                productVersion: "1.0",
+            }).then(x => unityInstance = x);</script>
+        <div class="right">
+            <!--<h><font color="white">↓Observer</font></h>-->
+            <canvas class="output_canvas" width="270px" height="180px"></canvas>
+        </div>
+        <div>
+            <button type="button" onclick="videoStart()">撮影</button>
+            <button type="button" onclick="videoStop()">停止</button>
+        </div>
     </div>
         <script type="module">const videoElement = document.getElementsByClassName('input_video')[0];
             const canvasElement = document.getElementsByClassName('output_canvas')[0];
