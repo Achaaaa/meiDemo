@@ -72,8 +72,7 @@
                 canvasCtx.drawImage(
                     results.image, 0, 0, canvasElement.width, canvasElement.height);
                 if (results.multiFaceLandmarks) {
-                    canvasCtx.fillRect(0, 0, 270, 180);
-                    canvasCtx.fill();
+                    
                     for (const landmarks of results.multiFaceLandmarks) {
                         drawConnectors(canvasCtx, landmarks, FACEMESH_TESSELATION,
                             { color: '#C0C0C070', lineWidth: 0.5 });
