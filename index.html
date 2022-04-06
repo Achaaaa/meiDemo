@@ -54,7 +54,7 @@
     function errorCallback(err) {
         alert(err);
     };</script>
-<video class="input_video" autoplay playsinline></video>
+<video class="input_video" autoplay playsinline width="270px" height="180px"></video>
 <body style="text-align: center">
     <div class>
         <canvas id="unity-canvas" width=640 height=512 style="width: 640px; height: 512px; background: #231F20"></canvas>
@@ -92,6 +92,7 @@
                 canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
                 canvasCtx.drawImage(
                     results.image, 0, 0, canvasElement.width, canvasElement.height);
+                canvasCtx.fillRect(0,0,270,180);
                 if (results.multiFaceLandmarks) {
                     
                     for (const landmarks of results.multiFaceLandmarks) {
