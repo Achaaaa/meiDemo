@@ -69,7 +69,7 @@
                 productName: "mei",
                 productVersion: "1.0",
             }).then(x => unityInstance = x);
-            if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+            if (navigator.userAgent.match(window.navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)) {
                 unityInstance.SendMessage('GameManager', 'checkSmartPhone');
             } 
         </script>
