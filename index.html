@@ -69,6 +69,10 @@
                 productName: "mei",
                 productVersion: "1.0",
             }).then(x => unityInstance = x);
+            if (window.navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
+                if (unityInstance != null) unityInstance.SendMessage('GameManager', 'checkSmartPhone');
+                alert('スマホだね。');
+            } 
         </script>
         <div class="right">
             <!--<h><font color="white">↓Observer</font></h>-->
@@ -157,10 +161,6 @@
             });
             camera.start();</script>
         <script>
-            if (window.navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
-                if (unityInstance != null) unityInstance.SendMessage('GameManager', 'checkSmartPhone');
-                alert('スマホだと重い時があります。');
-            } 
             function openEye() {
                 if (unityInstance != null) unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
             }
