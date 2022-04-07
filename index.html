@@ -158,8 +158,8 @@
             camera.start();</script>
         <script>
             if (window.navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
-                //unityInstance.SendMessage('GameManager', 'checkSmartPhone');
-                alert('JavaScriptのアラート');
+                if (unityInstance != null) unityInstance.SendMessage('GameManager', 'checkSmartPhone');
+                alert('スマホだと重い時があります。');
             } 
             function openEye() {
                 if (unityInstance != null) unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
