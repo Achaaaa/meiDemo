@@ -70,13 +70,13 @@
                 productVersion: "1.0",
             }).then(x => unityInstance = x);
             if (window.navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
-                if (unityInstance != null) unityInstance.SendMessage('GameManager', 'checkSmartPhone');
                 alert('スマホだね。');
             } 
         </script>
         <div class="right">
             <!--<h><font color="white">↓Observer</font></h>-->
             <canvas class="output_canvas" width="270px" height="180px"></canvas>
+            <input type="button" value="スマホモード" onclick="smartPhoneMode()">
         </div>
         <div>
         </div>
@@ -167,7 +167,11 @@
             function closeEye() {
                 if (unityInstance != null) unityInstance.SendMessage('eyeBlind', 'javaEyeClose');
 
-            }</script>
+            }
+            function smartPhoneMode() {
+            if (unityInstance != null) unityInstance.SendMessage('GameManager', 'checkSmartPhone');
+            }
+        </script>
 
 </body>
 </html >
