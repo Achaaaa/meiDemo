@@ -68,14 +68,16 @@
                 companyName: "DefaultCompany",
                 productName: "mei",
                 productVersion: "1.0",
-            }).then(x => unityInstance = x);</script>
+            }).then(x => unityInstance = x);
+            if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                unityInstance.SendMessage('GameManager', 'checkSmartPhone');
+            } 
+        </script>
         <div class="right">
             <!--<h><font color="white">↓Observer</font></h>-->
             <canvas class="output_canvas" width="270px" height="180px"></canvas>
         </div>
         <div>
-            <button type="button" onclick="videoStart()">撮影</button>
-            <button type="button" onclick="videoStop()">停止</button>
         </div>
     </div>
         <script type="module">const videoElement = document.getElementsByClassName('input_video')[0];
