@@ -69,9 +69,6 @@
                 productName: "mei",
                 productVersion: "1.0",
             }).then(x => unityInstance = x);
-            if (window.navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)) {
-                unityInstance.SendMessage('GameManager', 'checkSmartPhone');
-            } 
         </script>
         <div class="right">
             <!--<h><font color="white">↓Observer</font></h>-->
@@ -159,7 +156,11 @@
                 height: 360
             });
             camera.start();</script>
-        <script>function openEye() {
+        <script>
+            if (window.navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)) {
+                unityInstance.SendMessage('GameManager', 'checkSmartPhone');
+            } 
+            function openEye() {
                 if (unityInstance != null) unityInstance.SendMessage('eyeBlind', 'javaEyeOpen');
             }
             function closeEye() {
