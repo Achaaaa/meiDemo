@@ -116,6 +116,7 @@
                         rightEyeLower = results.multiFaceLandmarks[0][374]
                         if (Math.abs(leftEyeUpper.y - leftEyeLower.y) < 0.009) {
                             leftEyeClosed = true;
+                            document.dispatchEvent( new KeyboardEvent( "keyup",{key: "x" })) ;
                         }
                         else {
                             leftEyeClosed = false;
